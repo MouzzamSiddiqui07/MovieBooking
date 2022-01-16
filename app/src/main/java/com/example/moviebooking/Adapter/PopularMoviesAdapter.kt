@@ -50,7 +50,9 @@ class PopularMoviesAdapter(private val context : Context, private val popularMov
 
         //when click on specific movie poster
         holder.itemView.setOnClickListener{
-            context.startActivity(Intent(context, SpecificMovie::class.java))
+            val intent = Intent(context, SpecificMovie::class.java)
+            intent.putExtra("movie_id",popularMovie.id)
+            context.startActivity(intent)
         }
 
     }
