@@ -17,16 +17,15 @@
 
 
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Created By Mouzzam Siddiqui"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
-        android:layout_centerHorizontal="true"
-        android:textStyle="bold"
-        android:textSize="16sp"
-/>
+     <TextView
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:text="Created By Mouzzam Siddiqui"
+         android:layout_alignParentBottom="true"
+         android:layout_centerHorizontal="true"
+         android:layout_marginBottom="80dp"
+         android:textSize="16sp"
+         android:textStyle="bold"
+         android:letterSpacing="0.08"/>
 
 </RelativeLayout>
