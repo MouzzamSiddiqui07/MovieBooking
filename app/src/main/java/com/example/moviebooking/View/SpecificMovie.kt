@@ -39,6 +39,7 @@ class SpecificMovie : AppCompatActivity() {
     lateinit var releaseDateTextView : TextView
     lateinit var movieTitleTextView : TextView
     lateinit var ratingBar: RatingBar
+    lateinit var synopsisTextView: TextView
 
 
       var movieId : Int = 0
@@ -56,6 +57,7 @@ class SpecificMovie : AppCompatActivity() {
         releaseDateTextView = findViewById(R.id.releaseDateTextView)
         movieTitleTextView = findViewById(R.id.movieTitleTextView)
         ratingBar = findViewById(R.id.ratingBar)
+        synopsisTextView = findViewById(R.id.synopsisTextView)
 
         //when click on back arrow
         backArrowImageView.setOnClickListener{
@@ -97,6 +99,9 @@ class SpecificMovie : AppCompatActivity() {
             ratingBar.rating = (specificMovieModel.voteAverage % 5.0f).toFloat()
             //set release date
             releaseDateTextView.text = specificMovieModel.releaseDate
+
+            //set overview
+            synopsisTextView.text = specificMovieModel.overview
 
         })
 

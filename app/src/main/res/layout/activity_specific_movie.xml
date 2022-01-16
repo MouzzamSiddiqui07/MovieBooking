@@ -85,7 +85,8 @@
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
                android:layout_marginTop="40dp"
-               android:layout_marginStart="50dp"
+               android:id="@+id/linear1"
+               android:layout_marginStart="20dp"
                android:orientation="vertical">
 
 
@@ -106,6 +107,7 @@
                    android:text="The Amazing Spider Man"
                    android:textColor="@color/black"
                    android:letterSpacing="0.08"
+                   android:maxLines="1"
                    android:textSize="16sp"
                    android:id="@+id/movieTitleTextView"/>
 
@@ -123,10 +125,51 @@
                    android:numStars="5"/>
 
 
-
-
-
            </LinearLayout>
+
+
+           <androidx.cardview.widget.CardView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_below="@id/linear1"
+               android:layout_marginTop="20dp"
+               android:layout_marginBottom="10dp"
+               android:layout_marginLeft="10dp"
+               android:backgroundTint="@color/white"
+               app:cardElevation="12dp"
+               app:cardCornerRadius="4dp"
+               android:layout_marginRight="10dp">
+
+
+               <LinearLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:padding="10dp"
+                   android:orientation="vertical">
+
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Synopsis"
+                   android:textColor="@color/black"
+                   android:letterSpacing="0.07"
+                   android:textSize="20sp"/>
+
+               <TextView
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:text="Hello"
+                   android:inputType="textMultiLine"
+                   android:id="@+id/synopsisTextView"
+                   android:textColor="@color/actionBarGreenColor"
+                   android:textSize="16sp"/>
+
+               </LinearLayout>
+
+
+           </androidx.cardview.widget.CardView>
+
 
 
 
