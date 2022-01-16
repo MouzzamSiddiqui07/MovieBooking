@@ -96,7 +96,7 @@ class SpecificMovie : AppCompatActivity() {
             //set title
             movieTitleTextView.text = specificMovieModel.title
             //set ratings
-            ratingBar.rating = (specificMovieModel.voteAverage % 5.0f).toFloat()
+            ratingBar.rating = (specificMovieModel.voteAverage / 2).toFloat()
             //set release date
             releaseDateTextView.text = specificMovieModel.releaseDate
 
