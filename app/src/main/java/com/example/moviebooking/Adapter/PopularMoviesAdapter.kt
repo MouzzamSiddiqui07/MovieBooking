@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.moviebooking.Model.Result
 import com.example.moviebooking.R
 import com.example.moviebooking.Utils.Credentials
@@ -27,19 +28,16 @@ class PopularMoviesAdapter(private val context : Context, private val popularMov
     }
 
     override fun onBindViewHolder(holder: MyHolder , position: Int) {
-
-
-
-
             val popularMovie = popularMoviesList[position]
 
                 Glide.with(context).load(Credentials.IMAGE_BASE_URL + popularMovie.posterPath)
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
                     .into(holder.ImageView)
 
-
-                holder.movieNameTextView.text = popularMovie.title
-
-
+        //set movie title
+        holder.movieTitleTextView.text =  popularMovie.title
+        //set release date
+        holder.movieReleaseDate.text =  popularMovie.releaseDate
 
     }
 
@@ -47,11 +45,11 @@ class PopularMoviesAdapter(private val context : Context, private val popularMov
         return popularMoviesList.size
     }
 
-
     class MyHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
     {
-        val ImageView  =  itemView.findViewById<ImageView>(R.id.moviePosterImageView)
-        val movieNameTextView = itemView.findViewById<TextView>(R.id.movieNameTextView)
+        val ImageView  =  itemView.findViewById<ImageView>(R.id.movieImageView)
+        val movieTitleTextView = itemView.findViewById<TextView>(R.id.movieTitleTextView)
+        val movieReleaseDate = itemView.findViewById<TextView>(R.id.movieReleaseDateTextView)
     }
 
 }
