@@ -71,6 +71,11 @@ dependencies {
     //live data
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
 
+    //custom progress bar
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+
+
+
 
 
 

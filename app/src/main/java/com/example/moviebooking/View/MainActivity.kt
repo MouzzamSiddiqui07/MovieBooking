@@ -3,7 +3,10 @@ package com.example.moviebooking.View
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import android.widget.ProgressBar
 import androidx.core.content.withStyledAttributes
+import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,34 +25,75 @@ class MainActivity : AppCompatActivity() {
     lateinit var popularMoviesViewModel : PopularMoviesViewModel
     lateinit var popularMovieRecyclerView : RecyclerView
 
+    lateinit var gridLayoutManager: GridLayoutManager
+    lateinit var popularMoviesList : List<Result>
+
+    private val lastVisibleItemPosition: Int
+        get() = gridLayoutManager.findLastVisibleItemPosition()
+
+    private lateinit var popularMoviesAdapter: PopularMoviesAdapter
+
+    lateinit var popularMoviesRepository : PopularMoviesRepository
+
+
+    //nested scroll view object
+    lateinit var nestedScrollView : NestedScrollView
+    lateinit var  progressBar : ProgressBar
+    var pageCount = 1
+    var totalPageCount = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         //init recycler view
         popularMovieRecyclerView = findViewById(R.id.popularMovieRecyclerView)
+        nestedScrollView  = findViewById(R.id.scrollView)
+        progressBar = findViewById(R.id.progressBar)
+        popularMoviesList = mutableListOf()
 
-        var gridLayoutManager = GridLayoutManager(this , 2 , GridLayoutManager.VERTICAL , false)
+
+        gridLayoutManager = GridLayoutManager(this , 2 , GridLayoutManager.VERTICAL , false)
         popularMovieRecyclerView.layoutManager = gridLayoutManager
 
 
+        //create retrofit service instance
         val popularMovieService = RetrofitHelper.getInstance().create(MovieService :: class.java)
 
-        val popularMovieRepository = PopularMoviesRepository(popularMovieService)
+        //create repository instance
+        popularMoviesRepository = PopularMoviesRepository(popularMovieService)
 
-        popularMoviesViewModel = ViewModelProvider(this , PopularMoviesViewModelFactory(popularMovieRepository)).get(PopularMoviesViewModel :: class.java)
 
+        //create view model instance
+        popularMoviesViewModel = ViewModelProvider(this , PopularMoviesViewModelFactory(popularMoviesRepository)).get(PopularMoviesViewModel :: class.java)
+        popularMoviesViewModel.getPopularMovies(pageCount)
+
+
+
+        // observe live data of popular movies
         popularMoviesViewModel.popularMoviesLiveData.observe(this , {
                val popularMoviesModel =  it
-               val popularMoviesList  : List<Result> =  popularMoviesModel.results
-               val popularMoviesAdapter = PopularMoviesAdapter(this , popularMoviesList)
-                popularMovieRecyclerView.adapter = popularMoviesAdapter
+               totalPageCount = it.totalPages
+               (popularMoviesList as MutableList<Result>).addAll( popularMoviesModel.results)
+            popularMoviesAdapter = PopularMoviesAdapter(this , popularMoviesList)
+            popularMovieRecyclerView.adapter = popularMoviesAdapter
 
 
         })
 
 
+        nestedScrollView.setOnScrollChangeListener(NestedScrollView.OnScrollChangeListener { v, scrollX, scrollY, oldScrollX, oldScrollY ->
+            if(scrollY == v.getChildAt(0).measuredHeight - v.measuredHeight)
+            {
+
+                popularMoviesViewModel.getPopularMovies(++pageCount)
+
+            }
+        })
 
 
     }
+
+
+
 }

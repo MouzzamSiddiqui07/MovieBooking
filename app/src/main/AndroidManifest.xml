@@ -15,6 +15,7 @@
         android:theme="@style/Theme.MovieBooking" >
         <activity
             android:name=".View.MainActivity"
+            android:screenOrientation="sensor"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

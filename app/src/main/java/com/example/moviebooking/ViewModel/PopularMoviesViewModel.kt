@@ -12,12 +12,16 @@ class PopularMoviesViewModel(private val popularMoviesRepo : PopularMoviesReposi
     ViewModel() {
 
 
-        init {
-            viewModelScope.launch(Dispatchers.IO) {
-                popularMoviesRepo.getPopularMovies()
-            }
 
+    fun getPopularMovies(pageCount : Int)
+    {
+        viewModelScope.launch(Dispatchers.IO) {
+            popularMoviesRepo.getPopularMovies(pageCount)
         }
+    }
+
+
+
 
     val popularMoviesLiveData : LiveData<PopularMoviesModel>
     get() = popularMoviesRepo.popularMovieLiveData
