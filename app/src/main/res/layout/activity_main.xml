@@ -17,11 +17,20 @@
         android:elevation="10dp"
         android:background="@color/actionBarGreenColor">
 
+
+      <de.hdodenhof.circleimageview.CircleImageView
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:src="@mipmap/movie_icon_round"
+          android:layout_marginEnd="10dp"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
+        android:layout_marginStart="10dp"
         android:text="@string/popular_movies"
+        android:layout_gravity="center_vertical"
         android:textStyle="bold"
         android:textSize="18sp"/>
 
