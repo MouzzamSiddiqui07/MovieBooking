@@ -18,7 +18,9 @@ import com.example.moviebooking.R
 import com.example.moviebooking.Repository.PopularMoviesRepository
 import com.example.moviebooking.ViewModel.PopularMoviesViewModel
 import com.example.moviebooking.ViewModelFactory.PopularMoviesViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
 
@@ -57,15 +59,11 @@ class MainActivity : AppCompatActivity() {
         popularMovieRecyclerView.layoutManager = gridLayoutManager
 
 
-        //create retrofit service instance
-        val popularMovieService = RetrofitHelper.getInstance().create(MovieService :: class.java)
-
-        //create repository instance
-        popularMoviesRepository = PopularMoviesRepository(popularMovieService)
 
 
         //create view model instance
-        popularMoviesViewModel = ViewModelProvider(this , PopularMoviesViewModelFactory(popularMoviesRepository)).get(PopularMoviesViewModel :: class.java)
+//        popularMoviesViewModel = ViewModelProvider(this , PopularMoviesViewModelFactory(popularMoviesRepository)).get(PopularMoviesViewModel :: class.java)
+        popularMoviesViewModel = ViewModelProvider(this).get(PopularMoviesViewModel :: class.java)
         popularMoviesViewModel.getPopularMovies(pageCount)
 
 

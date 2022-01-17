@@ -5,10 +5,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.moviebooking.Model.PopularMoviesModel
 import com.example.moviebooking.Repository.PopularMoviesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PopularMoviesViewModel(private val popularMoviesRepo : PopularMoviesRepository)  :
+@HiltViewModel
+class PopularMoviesViewModel @Inject constructor (private val popularMoviesRepo : PopularMoviesRepository)  :
     ViewModel() {
 
 

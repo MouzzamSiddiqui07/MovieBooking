@@ -5,8 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.moviebooking.Model.SpecificMovieModel
 import com.example.moviebooking.Network.MovieService
+import javax.inject.Inject
 
-class SpecificMovieRepository(private val movieService : MovieService) {
+class SpecificMovieRepository @Inject constructor(private val movieService : MovieService) {
 
 
     private val mutableSpecificMovieLiveData =  MutableLiveData<SpecificMovieModel>()

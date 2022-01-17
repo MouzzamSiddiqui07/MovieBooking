@@ -1,12 +1,19 @@
 package com.example.moviebooking.Network
 
 import com.example.moviebooking.Utils.Credentials
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
-object RetrofitHelper {
+@Module
+@InstallIn(SingletonComponent :: class)
+class RetrofitHelper {
 
      val requestInterceptor  = Interceptor {  chain ->
 
@@ -31,7 +38,16 @@ object RetrofitHelper {
         .connectTimeout(60,TimeUnit.SECONDS)
         .build()
 
+    @Provides
+    @Singleton
+    fun getMovieServiceInstance(retrofit : Retrofit) : MovieService
+    {
+        return retrofit.create(MovieService :: class.java)
+    }
 
+
+    @Provides
+    @Singleton
     fun getInstance() : Retrofit
     {
         return Retrofit.Builder()

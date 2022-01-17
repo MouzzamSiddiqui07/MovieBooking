@@ -20,8 +20,10 @@ import com.example.moviebooking.ViewModel.SpecificMovieViewModel
 import com.example.moviebooking.ViewModelFactory.SpecificMovieViewModelFactory
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import dagger.hilt.android.AndroidEntryPoint
 
 
+@AndroidEntryPoint
 class SpecificMovie : AppCompatActivity() {
 
 
@@ -71,15 +73,8 @@ class SpecificMovie : AppCompatActivity() {
             Log.d("kkk", "Movie Id : $movieId")
         }
 
-
-        //create retrofit service
-        val specificMovieService  = RetrofitHelper.getInstance().create(MovieService :: class.java)
-
-        //create repository instance
-        specicMovieRepository = SpecificMovieRepository(specificMovieService)
-
         //create  view model instance
-        specificMovieViewModel = ViewModelProvider(this , SpecificMovieViewModelFactory(specicMovieRepository)).get(SpecificMovieViewModel:: class.java)
+        specificMovieViewModel = ViewModelProvider(this ).get(SpecificMovieViewModel:: class.java)
         specificMovieViewModel.getSpecificMovieDetails(movieId)
 
 
