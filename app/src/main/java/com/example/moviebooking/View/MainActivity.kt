@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         //init recycler view
         popularMovieRecyclerView = findViewById(R.id.popularMovieRecyclerView)
         nestedScrollView  = findViewById(R.id.scrollView)
-        progressBar = findViewById(R.id.progressBar)
+        progressBar = findViewById(R.id.spin_kit)
         popularMoviesList = mutableListOf()
 
 

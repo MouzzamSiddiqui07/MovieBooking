@@ -69,21 +69,24 @@
         android:orientation="vertical">
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/popularMovieRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="10dp"
-        android:nestedScrollingEnabled="false"
-        tools:itemCount="3"
-        tools:listitem="@layout/popular_movie_item"/>
-
-
-        <ProgressBar
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/popularMovieRecyclerView"
             android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:nestedScrollingEnabled="false"
+            tools:itemCount="3"
+            tools:listitem="@layout/popular_movie_item" />
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.Circle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/progressBar"/>
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/actionBarGreenColor" />
 
     </LinearLayout>
 
