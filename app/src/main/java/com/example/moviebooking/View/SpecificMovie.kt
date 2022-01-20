@@ -56,6 +56,8 @@ class SpecificMovie : AppCompatActivity() {
 
       var isLike : Boolean  = false
 
+    lateinit var  posterPath : String
+
 
     lateinit var movieDatabase: MovieDatabase
 
@@ -98,14 +100,14 @@ class SpecificMovie : AppCompatActivity() {
             if(isLike)
             {
             GlobalScope.launch {
-                movieDatabase.movieLikeDao().updateMovieLike(MovieLike(movieId,false))
+                movieDatabase.movieLikeDao().updateMovie(movieId,false)
 
             }
             }
             else
             {
                 GlobalScope.launch {
-                    movieDatabase.movieLikeDao().updateMovieLike(MovieLike(movieId,true))
+                    movieDatabase.movieLikeDao().updateMovieLike(MovieLike(movieId,true,synopsisTextView.text.toString(),movieTitleTextView.text.toString(),releaseDateTextView.text.toString(),ratingBar.rating.toDouble(),posterPath))
 
                 }
             }
@@ -120,6 +122,7 @@ class SpecificMovie : AppCompatActivity() {
         //observe live data of specic movie
         specificMovieViewModel.specificMovieLiveData.observe(this , {
             val specificMovieModel = it
+            posterPath = specificMovieModel.posterPath.toString()
             Glide.with(this).load(Credentials.IMAGE_BASE_URL+specificMovieModel.posterPath)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .centerCrop()

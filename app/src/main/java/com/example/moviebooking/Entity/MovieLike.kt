@@ -9,5 +9,10 @@ data class MovieLike(
 
     @PrimaryKey
     val movieId : Int,
-    val isLike  : Boolean
+    val isLike  : Boolean,
+    val overview : String,
+    val title : String ,
+    val releaseDate : String,
+    val rating : Double ,
+    val posterPath : String
 )

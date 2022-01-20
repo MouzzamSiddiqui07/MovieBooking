@@ -6,4 +6,44 @@
     android:layout_height="match_parent"
     tools:context=".View.FavouritesActivity">
 
+
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:id="@+id/actionBar"
+        android:elevation="10dp"
+        android:background="@color/actionBarGreenColor">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@mipmap/movie_icon_round"
+            android:layout_marginEnd="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_marginStart="10dp"
+            android:text="My Favourites"
+            android:layout_gravity="center_vertical"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
+
+
+
+    </androidx.appcompat.widget.Toolbar>
+
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/favRecyclerView"
+        android:layout_below="@id/actionBar"
+        android:layout_marginBottom="10dp"
+        tools:listitem="@layout/fav_movie_item"/>
+
 </RelativeLayout>

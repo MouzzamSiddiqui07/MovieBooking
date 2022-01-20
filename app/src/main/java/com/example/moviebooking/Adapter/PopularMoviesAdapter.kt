@@ -52,7 +52,7 @@ class PopularMoviesAdapter(private val context : Context, private val popularMov
 
             //put the like data in database
          GlobalScope.launch {
-             movieDatabase.movieLikeDao().insertMovieLike(MovieLike(popularMovie.id, false))
+             movieDatabase.movieLikeDao().insertMovieLike(MovieLike(popularMovie.id, false,"","","",0.0,popularMovie.posterPath))
          }
 
         //when click on specific movie poster

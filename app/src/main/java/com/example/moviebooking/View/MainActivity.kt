@@ -1,9 +1,11 @@
 package com.example.moviebooking.View
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import android.widget.ProgressBar
 import androidx.core.content.withStyledAttributes
 import androidx.core.widget.NestedScrollView
@@ -48,12 +50,23 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var movieDatabase : MovieDatabase
 
+    lateinit var favIconImageView : ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         //init the database
         movieDatabase = MovieDatabase.getDatabaseInstance(this)
+
+        //init the imageView
+        favIconImageView = findViewById(R.id.favIcon)
+
+        //when click on Fav Icon
+        favIconImageView.setOnClickListener{
+            val intent = Intent(applicationContext,FavouritesActivity :: class.java)
+            startActivity(intent)
+        }
 
 
 
