@@ -183,13 +183,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:fabSize="normal"
+        android:id="@+id/likeFab"
         android:baselineAlignBottom="false"
         android:clickable="true"
         app:layout_anchor="@id/appBar"
         app:layout_anchorGravity="end|bottom"
         android:layout_marginEnd="30dp"
-        android:src="@drawable/ic_action_fav_border"
-        android:backgroundTint="@color/white"
+        app:backgroundTint="@color/white"
+        android:src="@drawable/ic_action_fav_fill"
         android:focusable="true" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -19,12 +19,14 @@ import com.example.moviebooking.View.MainActivity
 import com.example.moviebooking.View.SpecificMovie
 import com.github.ybq.android.spinkit.SpinKitView
 import android.app.Activity
+import androidx.room.Room
+import com.example.moviebooking.Database.MovieDatabase
+import com.example.moviebooking.Entity.MovieLike
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
-
-
-class PopularMoviesAdapter(private val context : Context, private val popularMoviesList : List<Result>) : RecyclerView.Adapter<PopularMoviesAdapter.MyHolder>() {
-
+class PopularMoviesAdapter(private val context : Context, private val popularMoviesList : List<Result>,private val movieDatabase: MovieDatabase) : RecyclerView.Adapter<PopularMoviesAdapter.MyHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
@@ -47,6 +49,11 @@ class PopularMoviesAdapter(private val context : Context, private val popularMov
         //set release date
         holder.movieReleaseDate.text =  popularMovie.releaseDate
 
+
+            //put the like data in database
+         GlobalScope.launch {
+             movieDatabase.movieLikeDao().insertMovieLike(MovieLike(popularMovie.id, false))
+         }
 
         //when click on specific movie poster
         holder.itemView.setOnClickListener{

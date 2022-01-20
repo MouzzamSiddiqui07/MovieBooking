@@ -10,7 +10,9 @@ import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.example.moviebooking.Adapter.PopularMoviesAdapter
+import com.example.moviebooking.Database.MovieDatabase
 import com.example.moviebooking.Model.Result
 import com.example.moviebooking.Network.MovieService
 import com.example.moviebooking.Network.RetrofitHelper
@@ -44,9 +46,16 @@ class MainActivity : AppCompatActivity() {
     var pageCount = 1
     var totalPageCount = 0
 
+    lateinit var movieDatabase : MovieDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //init the database
+        movieDatabase =
+            Room.databaseBuilder(this , MovieDatabase ::class.java , "MovieDb").build()
+
 
         //init recycler view
         popularMovieRecyclerView = findViewById(R.id.popularMovieRecyclerView)
@@ -73,7 +82,7 @@ class MainActivity : AppCompatActivity() {
                val popularMoviesModel =  it
                totalPageCount = it.totalPages
                (popularMoviesList as MutableList<Result>).addAll( popularMoviesModel.results)
-            popularMoviesAdapter = PopularMoviesAdapter(this , popularMoviesList)
+            popularMoviesAdapter = PopularMoviesAdapter(this , popularMoviesList , movieDatabase)
             popularMovieRecyclerView.adapter = popularMoviesAdapter
 
 

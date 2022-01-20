@@ -1,6 +1,7 @@
 package com.example.moviebooking.View
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import android.widget.Toolbar
 import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.moviebooking.Network.MovieService
@@ -19,14 +21,20 @@ import com.example.moviebooking.Utils.Credentials
 import com.example.moviebooking.ViewModel.SpecificMovieViewModel
 import com.example.moviebooking.ViewModelFactory.SpecificMovieViewModelFactory
 import com.bumptech.glide.request.RequestOptions
+import com.example.moviebooking.Database.MovieDatabase
+import com.example.moviebooking.Entity.MovieLike
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class SpecificMovie : AppCompatActivity() {
 
 
+    lateinit var likeFab : FloatingActionButton
     lateinit var backArrowImageView : ImageView
 
     lateinit var specicMovieRepository: SpecificMovieRepository
@@ -46,6 +54,11 @@ class SpecificMovie : AppCompatActivity() {
 
       var movieId : Int = 0
 
+      var isLike : Boolean  = false
+
+
+    lateinit var movieDatabase: MovieDatabase
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +73,11 @@ class SpecificMovie : AppCompatActivity() {
         movieTitleTextView = findViewById(R.id.movieTitleTextView)
         ratingBar = findViewById(R.id.ratingBar)
         synopsisTextView = findViewById(R.id.synopsisTextView)
+        likeFab = findViewById(R.id.likeFab)
+
+        //init movie Database
+        movieDatabase =
+            Room.databaseBuilder(this , MovieDatabase ::class.java , "MovieDb").build()
 
         //when click on back arrow
         backArrowImageView.setOnClickListener{
@@ -71,6 +89,28 @@ class SpecificMovie : AppCompatActivity() {
         {
             movieId = intent.getIntExtra("movie_id",0)
             Log.d("kkk", "Movie Id : $movieId")
+        }
+
+       changeBackgroundWhenLike(movieId)
+
+        //when click on the floating action button
+        likeFab.setOnClickListener{
+            //change the value in the database
+            if(isLike)
+            {
+            GlobalScope.launch {
+                movieDatabase.movieLikeDao().updateMovieLike(MovieLike(movieId,false))
+
+            }
+            }
+            else
+            {
+                GlobalScope.launch {
+                    movieDatabase.movieLikeDao().updateMovieLike(MovieLike(movieId,true))
+
+                }
+            }
+
         }
 
         //create  view model instance
@@ -101,9 +141,23 @@ class SpecificMovie : AppCompatActivity() {
         })
 
 
+    }
 
-
-
+    fun changeBackgroundWhenLike(movieId : Int)
+    {
+        //check user already like the movie
+        movieDatabase.movieLikeDao().getMovieRow(movieId).observe(this,{
+            isLike = it.isLike
+            if(it.isLike)
+            {
+                Log.d("kkk","background change initiated")
+                likeFab.backgroundTintList = applicationContext.resources.getColorStateList(R.color.background_fab)
+            }
+            else
+            {
+                likeFab.backgroundTintList = applicationContext.resources.getColorStateList(R.color.background_fab_1)
+            }
+        })
     }
 
 
