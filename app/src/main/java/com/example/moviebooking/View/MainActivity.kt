@@ -53,8 +53,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //init the database
-        movieDatabase =
-            Room.databaseBuilder(this , MovieDatabase ::class.java , "MovieDb").build()
+        movieDatabase = MovieDatabase.getDatabaseInstance(this)
+
 
 
         //init recycler view

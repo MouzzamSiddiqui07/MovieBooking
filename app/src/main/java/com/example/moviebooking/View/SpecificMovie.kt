@@ -76,8 +76,7 @@ class SpecificMovie : AppCompatActivity() {
         likeFab = findViewById(R.id.likeFab)
 
         //init movie Database
-        movieDatabase =
-            Room.databaseBuilder(this , MovieDatabase ::class.java , "MovieDb").build()
+        movieDatabase = MovieDatabase.getDatabaseInstance(this)
 
         //when click on back arrow
         backArrowImageView.setOnClickListener{
