@@ -1,9 +1,9 @@
-package com.example.moviebooking.ViewModelFactory
+package com.example.moviebooking.viewModelFactory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.moviebooking.Repository.PopularMoviesRepository
-import com.example.moviebooking.ViewModel.PopularMoviesViewModel
+import com.example.moviebooking.repository.PopularMoviesRepository
+import com.example.moviebooking.viewModel.PopularMoviesViewModel
 
 class PopularMoviesViewModelFactory(private val popularMoviesRepo : PopularMoviesRepository) : ViewModelProvider.Factory
 {

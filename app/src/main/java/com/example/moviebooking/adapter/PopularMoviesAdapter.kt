@@ -1,4 +1,4 @@
-package com.example.moviebooking.Adapter
+package com.example.moviebooking.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -7,21 +7,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.moviebooking.Model.Result
+import com.example.moviebooking.model.Result
 import com.example.moviebooking.R
-import com.example.moviebooking.Utils.Credentials
-import com.example.moviebooking.View.MainActivity
-import com.example.moviebooking.View.SpecificMovie
-import com.github.ybq.android.spinkit.SpinKitView
-import android.app.Activity
-import androidx.room.Room
-import com.example.moviebooking.Database.MovieDatabase
-import com.example.moviebooking.Entity.MovieLike
+import com.example.moviebooking.utils.Credentials
+import com.example.moviebooking.view.SpecificMovie
+import com.example.moviebooking.database.MovieDatabase
+import com.example.moviebooking.entity.MovieLike
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 

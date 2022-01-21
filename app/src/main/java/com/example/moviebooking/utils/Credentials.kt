@@ -1,4 +1,4 @@
-package com.example.moviebooking.Utils
+package com.example.moviebooking.utils
 
 class Credentials {
      companion object {

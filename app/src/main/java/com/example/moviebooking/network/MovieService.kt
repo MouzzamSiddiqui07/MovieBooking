@@ -1,7 +1,7 @@
-package com.example.moviebooking.Network
+package com.example.moviebooking.network
 
-import com.example.moviebooking.Model.PopularMoviesModel
-import com.example.moviebooking.Model.SpecificMovieModel
+import com.example.moviebooking.model.PopularMoviesModel
+import com.example.moviebooking.model.SpecificMovieModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

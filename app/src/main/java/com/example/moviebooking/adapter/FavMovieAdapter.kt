@@ -1,4 +1,4 @@
-package com.example.moviebooking.Adapter
+package com.example.moviebooking.adapter
 
 import android.content.Context
 import android.content.Intent
@@ -11,10 +11,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.example.moviebooking.Entity.MovieLike
+import com.example.moviebooking.entity.MovieLike
 import com.example.moviebooking.R
-import com.example.moviebooking.Utils.Credentials
-import com.example.moviebooking.View.SpecificMovie
+import com.example.moviebooking.utils.Credentials
+import com.example.moviebooking.view.SpecificMovie
 
 class FavMovieAdapter(private val context : Context , private val movieList : List<MovieLike>) : RecyclerView.Adapter<FavMovieAdapter.MyHolder>()
 {

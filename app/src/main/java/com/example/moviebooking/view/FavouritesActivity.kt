@@ -1,13 +1,13 @@
-package com.example.moviebooking.View
+package com.example.moviebooking.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.moviebooking.Adapter.FavMovieAdapter
-import com.example.moviebooking.Database.MovieDatabase
-import com.example.moviebooking.Entity.MovieLike
+import com.example.moviebooking.adapter.FavMovieAdapter
+import com.example.moviebooking.database.MovieDatabase
+import com.example.moviebooking.entity.MovieLike
 import com.example.moviebooking.R
 
 class FavouritesActivity : AppCompatActivity() {

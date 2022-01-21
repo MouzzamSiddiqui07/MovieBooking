@@ -2,7 +2,7 @@ package com.example.moviebooking.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.moviebooking.Entity.MovieLike
+import com.example.moviebooking.entity.MovieLike
 
 @Dao
 interface MovieLikeDao {

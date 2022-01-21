@@ -1,11 +1,10 @@
-package com.example.moviebooking.Repository
+package com.example.moviebooking.repository
 
-import android.graphics.Movie
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.moviebooking.Model.PopularMoviesModel
-import com.example.moviebooking.Network.MovieService
+import com.example.moviebooking.model.PopularMoviesModel
+import com.example.moviebooking.network.MovieService
 import javax.inject.Inject
 
 class PopularMoviesRepository @Inject constructor(private val movieService : MovieService) {
@@ -16,11 +15,6 @@ class PopularMoviesRepository @Inject constructor(private val movieService : Mov
 
     val popularMovieLiveData : LiveData<PopularMoviesModel>
     get() = mutablePopularMoviesLiveData
-
-
-
-
-
 
      suspend fun getPopularMovies(pageCount : Int)
      {

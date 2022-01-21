@@ -1,10 +1,10 @@
-package com.example.moviebooking.Database
+package com.example.moviebooking.database
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.example.moviebooking.Entity.MovieLike
+import com.example.moviebooking.entity.MovieLike
 import com.example.moviebooking.dao.MovieLikeDao
 
 @Database(entities = [MovieLike :: class],version = 2)

@@ -1,4 +1,4 @@
-package com.example.moviebooking.View
+package com.example.moviebooking.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

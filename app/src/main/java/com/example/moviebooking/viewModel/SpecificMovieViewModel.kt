@@ -1,10 +1,10 @@
-package com.example.moviebooking.ViewModel
+package com.example.moviebooking.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.moviebooking.Model.SpecificMovieModel
-import com.example.moviebooking.Repository.SpecificMovieRepository
+import com.example.moviebooking.model.SpecificMovieModel
+import com.example.moviebooking.repository.SpecificMovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

@@ -1,27 +1,20 @@
-package com.example.moviebooking.View
+package com.example.moviebooking.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
-import androidx.core.content.withStyledAttributes
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.room.Room
-import com.example.moviebooking.Adapter.PopularMoviesAdapter
-import com.example.moviebooking.Database.MovieDatabase
-import com.example.moviebooking.Model.Result
-import com.example.moviebooking.Network.MovieService
-import com.example.moviebooking.Network.RetrofitHelper
+import com.example.moviebooking.adapter.PopularMoviesAdapter
+import com.example.moviebooking.database.MovieDatabase
+import com.example.moviebooking.model.Result
 import com.example.moviebooking.R
-import com.example.moviebooking.Repository.PopularMoviesRepository
-import com.example.moviebooking.ViewModel.PopularMoviesViewModel
-import com.example.moviebooking.ViewModelFactory.PopularMoviesViewModelFactory
+import com.example.moviebooking.repository.PopularMoviesRepository
+import com.example.moviebooking.viewModel.PopularMoviesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
