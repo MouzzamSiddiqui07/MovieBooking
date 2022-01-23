@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:backgroundTint="@color/white"
+        android:background="@color/actionBarGreenColor"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="5dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:src="@drawable/ic_action_fav"
+                android:id="@+id/moviePosterImageView"
+                android:layout_margin="10dp"/>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="The amazing spider man"
+                    android:singleLine="true"
+                    android:maxLines="1"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:id="@+id/titleTextView"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12-09-2022"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:id="@+id/releaseDateTextView"/>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="3"
+                    android:id="@+id/synopsisTextView"
+                    android:text="Some Data"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"/>
+
+
+                <androidx.appcompat.widget.AppCompatRatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:rating="6"
+                    android:id="@+id/ratingBar"
+                    android:clickable="false"
+                    android:progressTint="@color/actionBarGreenColor"
+                    android:stepSize="0.5"
+                    android:layout_marginTop="5dp"
+                    style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                    android:progressBackgroundTint="@color/black"
+                    android:numStars="5"/>
+
+
+
+
+
+"
+
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+</RelativeLayout>
