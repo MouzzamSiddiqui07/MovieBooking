@@ -16,30 +16,29 @@ import com.example.moviebooking.R
 import com.example.moviebooking.utils.Credentials
 import com.example.moviebooking.view.SpecificMovie
 
-class FavMovieAdapter(private val context : Context , private val movieList : List<MovieLike>) : RecyclerView.Adapter<FavMovieAdapter.MyHolder>()
-{
+class FavMovieAdapter(private val context: Context, private val movieList: List<MovieLike>) :
+    RecyclerView.Adapter<FavMovieAdapter.MyHolder>() {
 
 
-    class MyHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
-    {
-        val posterImageView = itemView.findViewById<ImageView>(R.id.moviePosterImageView)
-        val titleTextView = itemView.findViewById<TextView>(R.id.titleTextView)
-        val releaseDateTextView = itemView.findViewById<TextView>(R.id.releaseDateTextView)
-        val synopsisTextView = itemView.findViewById<TextView>(R.id.synopsisTextView)
-        val RatingBar = itemView.findViewById<RatingBar>(R.id.ratingBar)
+    class MyHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val posterImageView: ImageView = itemView.findViewById(R.id.moviePosterImageView)
+        val titleTextView: TextView = itemView.findViewById(R.id.titleTextView)
+        val releaseDateTextView: TextView = itemView.findViewById(R.id.releaseDateTextView)
+        val synopsisTextView: TextView = itemView.findViewById(R.id.synopsisTextView)
+        val ratingBar: RatingBar = itemView.findViewById(R.id.ratingBar)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.fav_movie_item,parent,false)
+        val view = LayoutInflater.from(context).inflate(R.layout.fav_movie_item, parent, false)
         return MyHolder(view)
     }
 
     override fun onBindViewHolder(holder: MyHolder, position: Int) {
-        val movieLike   = movieList[position]
+        val movieLike = movieList[position]
         holder.releaseDateTextView.text = movieLike.releaseDate
         holder.synopsisTextView.text = movieLike.overview
         holder.titleTextView.text = movieLike.title
-        holder.RatingBar.rating = movieLike.rating.toFloat()
+        holder.ratingBar.rating = movieLike.rating.toFloat()
 
         //set the image
         Glide.with(context).load(Credentials.IMAGE_BASE_URL + movieLike.posterPath)
@@ -47,9 +46,9 @@ class FavMovieAdapter(private val context : Context , private val movieList : Li
             .into(holder.posterImageView)
 
         //when click on fav movies
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener {
             val intent = Intent(context, SpecificMovie::class.java)
-            intent.putExtra("movie_id",movieLike.movieId)
+            intent.putExtra("movie_id", movieLike.movieId)
             context.startActivity(intent)
         }
     }

@@ -36,7 +36,7 @@ class PopularMoviesAdapter(private val context : Context, private val popularMov
 
                 Glide.with(context).load(Credentials.IMAGE_BASE_URL + popularMovie.posterPath)
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
-                    .into(holder.ImageView)
+                    .into(holder.imageView)
 
         //set movie title
         holder.movieTitleTextView.text =  popularMovie.title
@@ -64,9 +64,9 @@ class PopularMoviesAdapter(private val context : Context, private val popularMov
 
     class MyHolder(itemView : View) : RecyclerView.ViewHolder(itemView)
     {
-        val ImageView  =  itemView.findViewById<ImageView>(R.id.movieImageView)
-        val movieTitleTextView = itemView.findViewById<TextView>(R.id.movieTitleTextView)
-        val movieReleaseDate = itemView.findViewById<TextView>(R.id.movieReleaseDateTextView)
+        val imageView: ImageView =  itemView.findViewById(R.id.movieImageView)
+        val movieTitleTextView: TextView = itemView.findViewById(R.id.movieTitleTextView)
+        val movieReleaseDate : TextView = itemView.findViewById(R.id.movieReleaseDateTextView)
     }
 
 }
